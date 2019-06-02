@@ -5,20 +5,18 @@ preloaded = false;
 
 class Engine {
     constructor() {
-        this.onready = function () { };
+        this.onready = function (engine) { };
 
-        this.canvas = document.getElementById("gameCanvas");
-        this.ctx = this.canvas.getContext('2d');
+        this.canvas = Engine.canvas;
+        this.ctx = Engine.ctx;
 
-
-        this.delta = 0;
+        this.delta = 0.0;
         this.lastFrameTimeMs = 0;
         this.timeStep = 1000 / 60;
 
         this.entities = [];
 
         this.canvas.addEventListener('mousemove', MouseInput.onMouseMove);
-
     }
 
     loadTexture(name, path) {
@@ -57,7 +55,7 @@ class Engine {
             return;
         }
 
-        this.onready();
+        this.onready(this);
     }
 
     mainloop(timeStamp) {
@@ -84,6 +82,7 @@ class Engine {
     }
 
     render(ctx) {
+        Utils.clearScreen();
         for (let obj of this.entities) {
             obj.render(this.ctx);
         }
@@ -92,5 +91,7 @@ class Engine {
     addObject(obj) {
         this.entities.push(obj);
     }
-
 }
+
+Engine.canvas = document.getElementById("gameCanvas");
+Engine.ctx = Engine.canvas.getContext('2d');

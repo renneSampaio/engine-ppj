@@ -12,17 +12,15 @@ window.onload = function () {
 		]
 	);
 
-	var setup = function () {
+	var setup = function (engine) {
 		var obj = new GameObject();
-		obj
-			.addComponent(new Sprite(obj, "icon"))
-			.addComponent(new MouseFollow(obj));
+		obj.addComponent(new Sprite(obj, "icon"))
+		obj.addComponent(new MouseFollow(obj));
 
 		var ctx = document.getElementById("gameCanvas").getContext("2d");
 
 		engine.addObject(obj);
-		engine.mainloop();
-
+		window.requestAnimationFrame(engine.mainloop.bind(engine));
 	};
 
 	engine.onready = setup;

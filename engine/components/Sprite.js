@@ -7,7 +7,6 @@ class Sprite extends Component {
     }
 
     update(delta) {
-        console.log("ieie");
     }
 
     render(ctx) {

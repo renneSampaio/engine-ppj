@@ -4,10 +4,11 @@ class MouseFollow extends Component {
     }
 
     update(delta) {
-        // this.transform.x = MouseInput.getX();
-        // this.transform.y = MouseInput.getY();
-
-        this.gameObject.transform.x = 100;
-        console.log("ieie");
+        this.transform.x = MouseInput.getX();
+        this.transform.y = MouseInput.getY();
     }
+
+    render(ctx) {
+    }
+
 }

@@ -14,7 +14,10 @@ class MouseInput {
     }
 
     static onMouseMove(event) {
-        MouseInput.x = event.clientX;
-        MouseInput.y = event.clientY;
+        var rect = Engine.canvas.getBoundingClientRect();
+        var root = document.documentElement;
+
+        MouseInput.x = event.clientX - rect.left - root.scrollLeft;
+        MouseInput.y = event.clientY - rect.top - root.scrollTop;
     }
 }
